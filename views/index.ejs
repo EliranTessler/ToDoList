@@ -2,23 +2,27 @@
 
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
     <div class="list-group">
-        <form action="/addtask" method="POST" class="card p-2 mb-2">
+        <form action="/addtask" method="post" class="card p-2 mb-2">
             <div class="input-group">
-                <input type="text" name="task" class="form-control" placeholder="New Task">
+                <input type="text" name="newTask" class="form-control" placeholder="New Task">
                 <button type="submit" class="btn btn-secondary">Add Task</button>
             </div>
         </form>
 
-        <% if (locals.tasks)  { 
-            for (var i = 0; i < tasks.length; ++i) { %>
-                <label class="list-group-item d-flex gap-2">
-                  <input class="form-check-input flex-shrink-0" type="checkbox" value="">
-                  <span>
-                    <%= tasks[i] %>
-                  </span>
-                </label>
-            <% } 
-         } %>
+        <% if (locals.tasks)  { %>
+            <% tasks.forEach((task) => { %>
+            <form  action="/delete" method="post">
+                    <label class="list-group-item d-flex gap-2">
+                        <input class="form-check-input flex-shrink-0" type="checkbox" name="checkbox" value="<%=task._id%>" onChange="this.form.submit()" <%= task.checked %>>
+                        <span>
+                        <%= task.content %>
+                        </span>
+                        <div class="editIcon">
+                            <img src="./pen.svg" class="hidden"/>
+                        </div>
+                    </label> 
+            </form>
+        <%  });} %>
     </div>
   
 </div>

@@ -1,0 +1,18 @@
+.editIcon img {
+    visibility: hidden;
+
+}
+
+.editIcon:hover img {
+    visibility: visible;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-group-item .form-check-input {
+    margin-right: 10px;
+}
